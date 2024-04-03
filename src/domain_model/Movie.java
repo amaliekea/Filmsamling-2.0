@@ -1,3 +1,5 @@
+package domain_model;
+
 import java.util.Objects;
 
 public class Movie { //movie klasse med private attributter

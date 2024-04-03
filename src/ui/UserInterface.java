@@ -1,3 +1,8 @@
+package ui;
+
+import domain_model.Controller;
+import domain_model.Movie;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 //skaffer brugerinput
