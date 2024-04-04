@@ -209,4 +209,5 @@ public class UserInterface {
         String title = scanner.next();
         System.out.println(movieController.removeMovie(title));
     }
+
 }

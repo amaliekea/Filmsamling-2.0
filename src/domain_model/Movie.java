@@ -94,4 +94,5 @@ public class Movie { //movie klasse med private attributter
                 Objects.equals(lengthInMinutes, film.lengthInMinutes) &&
                 Objects.equals(genre, film.genre);
     }
+
 }
