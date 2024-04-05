@@ -94,5 +94,8 @@ public class Movie { //movie klasse med private attributter
                 Objects.equals(lengthInMinutes, film.lengthInMinutes) &&
                 Objects.equals(genre, film.genre);
     }
+    public String toCsvString() {
+        return title + "," + director + "," + year + "," + Color + "," + lengthInMinutes + "," + genre;
+    }
 
 }

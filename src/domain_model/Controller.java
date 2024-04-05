@@ -1,12 +1,19 @@
 package domain_model;
 
+import data_source.FileHandler;
 import domain_model.Movie;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Controller {
     private MovieCollection liste;
+    private FileHandler filehandler;
 
     public Controller() {
-        liste = new MovieCollection();
+        this.filehandler = new FileHandler();
+
+        this.liste = filehandler.loadMovies();
     }
 
     public void addMovie(String title, String director, int year, boolean color, int minute, String genre) {
@@ -15,6 +22,12 @@ public class Controller {
     }
     public void printCollection() {
         liste.printMyCollection();
+    }
+    public void loadMovies() {
+        liste = filehandler.loadMovies();
+    }
+    public void saveMovies() {
+        filehandler.saveListOfMovies(liste);
     }
     public void printMovie (int i) {
         liste.printMovie(i);

@@ -2,16 +2,18 @@ package domain_model;
 
 import domain_model.Movie;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-//sætter nye værdier ind
-
+import java.util.Scanner;
 public class MovieCollection {
     protected ArrayList<Movie> filmObjekter;
 
     public MovieCollection() {
         filmObjekter = new ArrayList<>();
-        //filmObjekter.add(new domain_model.Movie("hunger games", "james", 2002, true, 120, "science fiction"));
-        //filmObjekter.add(new domain_model.Movie("harry potter", "harry", 2002, true, 120, "science fiction"));
+    }
+    public MovieCollection(ArrayList<Movie> preLoadedMovies) {
+        this.filmObjekter = preLoadedMovies;
     }
 
     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
@@ -76,5 +78,7 @@ public class MovieCollection {
         }
         return "domain_model.Movie not found.";
     }
+
+
 }
 
