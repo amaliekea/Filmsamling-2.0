@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="userstory 10 forslag">
+    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="userstory 12 forslag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moviecollection.csv" beforeDir="false" afterPath="$PROJECT_DIR$/moviecollection.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain_model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Controller.java" afterDir="false" />
@@ -96,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712131641924</updated>
       <workItem from="1712131642990" duration="1367000" />
-      <workItem from="1712561336483" duration="1559000" />
+      <workItem from="1712561336483" duration="6310000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -146,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712337257716</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="userstory 12 forslag">
+      <option name="closed" value="true" />
+      <created>1712567978898</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712567978898</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +177,7 @@
     <MESSAGE value="setup packages" />
     <MESSAGE value="setup med test2" />
     <MESSAGE value="userstory 10 forslag" />
-    <option name="LAST_COMMIT_MESSAGE" value="userstory 10 forslag" />
+    <MESSAGE value="userstory 12 forslag" />
+    <option name="LAST_COMMIT_MESSAGE" value="userstory 12 forslag" />
   </component>
 </project>

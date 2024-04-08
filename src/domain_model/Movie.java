@@ -1,11 +1,15 @@
 package domain_model;
-
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Movie { //movie klasse med private attributter
-    public static Comparator<Movie> COMPARATOR = Comparator.comparing(Movie::getTitle);
-            //.thenComparing(Movie::getAge);
+public class Movie {
+    public static Comparator<Movie> COMPARE_BY_TITLE = Comparator.comparing(Movie::getTitle);
+    public static Comparator<Movie> COMPARE_BY_DIRECTOR = Comparator.comparing(Movie::getDirector);
+    public static Comparator<Movie> COMPARE_BY_YEAR = Comparator.comparing(Movie::getYear);
+    public static Comparator<Movie> COMPARE_BY_COLOR = Comparator.comparing(Movie::getColor);
+    public static Comparator<Movie> COMPARE_BY_LENGTH = Comparator.comparing(Movie::getLengthInMinutes);
+    public static Comparator<Movie> COMPARE_BY_GENRE = Comparator.comparing(Movie::getGenre);
+
     private String title;
     private String director;
     private int year;

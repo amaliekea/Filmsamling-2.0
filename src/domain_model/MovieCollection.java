@@ -5,6 +5,7 @@ import domain_model.Movie;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 public class MovieCollection {
     protected ArrayList<Movie> filmObjekter;
@@ -15,8 +16,8 @@ public class MovieCollection {
     public MovieCollection(ArrayList<Movie> preLoadedMovies) {
         this.filmObjekter = preLoadedMovies;
     }
-    public void sortMovies() {
-        filmObjekter.sort(Movie.COMPARATOR);
+    public void sortMoviesBy(Comparator<Movie> movieCompare) {
+        filmObjekter.sort(movieCompare);
     }
 
     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {

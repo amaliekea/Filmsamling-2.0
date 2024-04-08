@@ -5,6 +5,7 @@ import domain_model.Movie;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Controller {
     private MovieCollection liste;
@@ -16,16 +17,14 @@ public class Controller {
         this.liste = filehandler.loadMovies();
     }
 
-    public void sortMovies() {
-        liste.sortMovies();
-    }
 
     public void addMovie(String title, String director, int year, boolean color, int minute, String genre) {
         liste.addMovie(title, director, year, color, minute, genre);
         System.out.println("domain_model.Movie added successfully!");
     }
 
-    public void printCollection() {
+    public void printCollection(Comparator<Movie> movieCompare) {
+        liste.sortMoviesBy(movieCompare);
         liste.printMyCollection();
     }
 
