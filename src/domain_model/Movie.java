@@ -2,7 +2,7 @@ package domain_model;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Movie {
+public class Movie { //sammenligne 2 instanser
     public static Comparator<Movie> COMPARE_BY_TITLE = Comparator.comparing(Movie::getTitle);
     public static Comparator<Movie> COMPARE_BY_DIRECTOR = Comparator.comparing(Movie::getDirector);
     public static Comparator<Movie> COMPARE_BY_YEAR = Comparator.comparing(Movie::getYear);

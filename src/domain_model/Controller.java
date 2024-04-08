@@ -1,10 +1,5 @@
 package domain_model;
-
 import data_source.FileHandler;
-import domain_model.Movie;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Controller {
@@ -13,7 +8,6 @@ public class Controller {
 
     public Controller() {
         this.filehandler = new FileHandler();
-
         this.liste = filehandler.loadMovies();
     }
 
