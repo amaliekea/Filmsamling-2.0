@@ -1,20 +1,11 @@
 package domain_model;
-
-import domain_model.Movie;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Scanner;
 public class MovieCollection {
     protected ArrayList<Movie> filmObjekter;
 
     public MovieCollection() {
         filmObjekter = new ArrayList<>();
-    }
-    public MovieCollection(ArrayList<Movie> preLoadedMovies) {
-        this.filmObjekter = preLoadedMovies;
     }
     public void sortMoviesBy(Comparator<Movie> movieCompare) {
         filmObjekter.sort(movieCompare);
@@ -77,10 +68,10 @@ public class MovieCollection {
             Movie m = filmObjekter.get(i);
             if (m.getTitle().equalsIgnoreCase(title)) {
                 filmObjekter.remove(i);
-                return "domain_model.Movie removed successfully.";
+                return "Movie removed successfully.";
             }
         }
-        return "domain_model.Movie not found.";
+        return "Movie not found.";
     }
 
 

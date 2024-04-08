@@ -20,7 +20,7 @@ public class Controller {
 
     public void addMovie(String title, String director, int year, boolean color, int minute, String genre) {
         liste.addMovie(title, director, year, color, minute, genre);
-        System.out.println("domain_model.Movie added successfully!");
+        System.out.println("Movie added successfully!");
     }
 
     public void printCollection(Comparator<Movie> movieCompare) {

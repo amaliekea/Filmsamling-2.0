@@ -21,6 +21,7 @@ public class UserInterface {
 
             if (userChoice == 1) {
                 addMovie();
+                movieController.saveMovies(); // ny til us 11??
 
             } else if (userChoice == 2) {
                 movieController.printCollection(getSortOption());
@@ -33,10 +34,12 @@ public class UserInterface {
                 movieController.searchMovie(title);
             } else if (userChoice == 5) {
                 editMovie();
+                movieController.saveMovies(); // ny til us 11?
             } else if (userChoice == 6) {
                 remove();
+                movieController.saveMovies();//ny til us 11?
             } else if (userChoice >= sentinel) {
-                movieController.saveMovies();
+                //movieController.saveMovies();
                 System.out.println("Afsluttet");
             }
         }
