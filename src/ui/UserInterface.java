@@ -22,8 +22,8 @@ public class UserInterface {
                 addMovie();
 
             } else if (userChoice == 2) {
+                movieController.sortMovies();
                 movieController.printCollection();
-
             } else if (userChoice == 3) {
                 int movieNumber = getMovieNumber();
                 movieController.printMovie(movieNumber);

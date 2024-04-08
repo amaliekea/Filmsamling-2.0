@@ -15,6 +15,9 @@ public class MovieCollection {
     public MovieCollection(ArrayList<Movie> preLoadedMovies) {
         this.filmObjekter = preLoadedMovies;
     }
+    public void sortMovies() {
+        filmObjekter.sort(Movie.COMPARATOR);
+    }
 
     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
         filmObjekter.add(new Movie(title, director, year, Color, lengthInMinutes, genre));
