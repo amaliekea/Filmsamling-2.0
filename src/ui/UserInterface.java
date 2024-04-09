@@ -3,10 +3,13 @@ package ui;
 import domain_model.Controller;
 import domain_model.Movie;
 
-import java.util.Comparator;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-//skaffer brugerinput
+import java.util.*;
+import domain_model.TitleComparator;
+import domain_model.DirectorComparator;
+import domain_model.YearComparator;
+import domain_model.ColorComparator;
+import domain_model.LengthComparator;
+import domain_model.GenreComparator;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
@@ -208,6 +211,7 @@ public class UserInterface {
         String title = scanner.next();
         System.out.println(movieController.removeMovie(title));
     }
+
     private Comparator<Movie> getSortOption() {
         System.out.println("select an option to sort by:");
         System.out.println("1. Title");
@@ -221,21 +225,23 @@ public class UserInterface {
 
         switch (userInput) {
             case 1:
-                return Movie.COMPARE_BY_TITLE;
+                return new TitleComparator();
             case 2:
-                return Movie.COMPARE_BY_DIRECTOR;
+                return new DirectorComparator();
             case 3:
-                return Movie.COMPARE_BY_YEAR;
+                return new YearComparator();
             case 4:
-                return Movie.COMPARE_BY_COLOR;
+                return new ColorComparator();
             case 5:
-                return Movie.COMPARE_BY_LENGTH;
+                return new LengthComparator();
             case 6:
-                return Movie.COMPARE_BY_GENRE;
+                return new GenreComparator();
             default:
-                System.out.println("invalid option, default to tile");
-                return Movie.COMPARE_BY_TITLE;
+                System.out.println("invalid option, default to title");
+                return new TitleComparator();
         }
     }
 
 }
+
+

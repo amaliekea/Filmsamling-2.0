@@ -1,5 +1,7 @@
 package domain_model;
 import data_source.FileHandler;
+
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Controller {
@@ -47,6 +49,7 @@ public class Controller {
         liste.editMovie(i, title, director, year, Color, lengthInMinutes, genre);
         this.saveMovies();
     }
+
 
     public String removeMovie(String title) {
         String r = liste.removeMovie(title);

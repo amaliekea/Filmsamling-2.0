@@ -3,12 +3,6 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Movie { //sammenligne 2 instanser
-    public static Comparator<Movie> COMPARE_BY_TITLE = Comparator.comparing(Movie::getTitle);
-    public static Comparator<Movie> COMPARE_BY_DIRECTOR = Comparator.comparing(Movie::getDirector);
-    public static Comparator<Movie> COMPARE_BY_YEAR = Comparator.comparing(Movie::getYear);
-    public static Comparator<Movie> COMPARE_BY_COLOR = Comparator.comparing(Movie::getColor);
-    public static Comparator<Movie> COMPARE_BY_LENGTH = Comparator.comparing(Movie::getLengthInMinutes);
-    public static Comparator<Movie> COMPARE_BY_GENRE = Comparator.comparing(Movie::getGenre);
 
     private String title;
     private String director;
