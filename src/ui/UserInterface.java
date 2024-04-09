@@ -3,9 +3,13 @@ package ui;
 import domain_model.Controller;
 import domain_model.Movie;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-//skaffer brugerinput
+import java.util.*;
+import domain_model.TitleComparator;
+import domain_model.DirectorComparator;
+import domain_model.YearComparator;
+import domain_model.ColorComparator;
+import domain_model.LengthComparator;
+import domain_model.GenreComparator;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
@@ -13,8 +17,8 @@ public class UserInterface {
 
     public void startProgram() {
         int userChoice = 0;
-        int sentinel = 6;
-
+        int sentinel = 7;
+        movieController.loadMovies();
         while (userChoice < sentinel) {
             userChoice = movieMenu();
 
@@ -22,8 +26,7 @@ public class UserInterface {
                 addMovie();
 
             } else if (userChoice == 2) {
-                movieController.printCollection();
-
+                movieController.printCollection(getSortOption());
             } else if (userChoice == 3) {
                 int movieNumber = getMovieNumber();
                 movieController.printMovie(movieNumber);
@@ -33,9 +36,8 @@ public class UserInterface {
                 movieController.searchMovie(title);
             } else if (userChoice == 5) {
                 editMovie();
-            } else if (userChoice==6) {
+            } else if (userChoice == 6) {
                 remove();
-
             } else if (userChoice >= sentinel) {
                 System.out.println("Afsluttet");
             }
@@ -123,33 +125,32 @@ public class UserInterface {
         Movie m = movieController.getMovie(movieNumber);
 
 
-
         System.out.println("Would you like to edit the title? Enter yes/no");
         String Edit;
         String titleEdit = m.getTitle();
-        Edit=scanner.next();
+        Edit = scanner.next();
         scanner.nextLine();
         if (Edit.equals("yes")) {
             System.out.println("Enter the new title;");
             titleEdit = scanner.nextLine();
-            System.out.println("The new title is "+titleEdit);
+            System.out.println("The new title is " + titleEdit);
             m.setTitle(titleEdit);
         } else {
-            System.out.println("I will keep the title "+m.getTitle());
+            System.out.println("I will keep the title " + m.getTitle());
         }
         System.out.println("Would you like to edit the director? Enter yes/no");
-        String directorEdit= m.getDirector();
+        String directorEdit = m.getDirector();
         Edit = scanner.nextLine();
         if (Edit.equals("yes")) {
             System.out.println("Enter the new director: ");
             directorEdit = scanner.nextLine();
-            System.out.println("The new director is "+directorEdit);
+            System.out.println("The new director is " + directorEdit);
             m.setDirector(directorEdit);
         } else {
-            System.out.println("I will keep the director "+m.getDirector());
+            System.out.println("I will keep the director " + m.getDirector());
         }
         System.out.println("Would you like to edit the year? Enter yes/no");
-        int yearEdit=m.getYear();
+        int yearEdit = m.getYear();
         Edit = scanner.nextLine();
         if (Edit.equals("yes")) {
             System.out.println("enter the new year: ");
@@ -157,26 +158,26 @@ public class UserInterface {
             System.out.println("The new year is " + yearEdit);
             m.setYear(yearEdit);
         } else {
-            System.out.println("I will keep the year "+m.getYear());
+            System.out.println("I will keep the year " + m.getYear());
         }
         System.out.println("Would you like to edit the color? yes/no");
-        Boolean colorEdit= m.getColor();
+        Boolean colorEdit = m.getColor();
         Edit = scanner.nextLine();
-        if(Edit.equals("yes")){
+        if (Edit.equals("yes")) {
             System.out.println("Type yes for color, no for black and white");
             String colorEditString = scanner.nextLine();
             if (colorEditString.equals("yes")) {
                 m.setColor(true);
-                colorEdit=true;
+                colorEdit = true;
                 System.out.println("The movie is now in color");
             } else {
                 m.setColor(false);
-                colorEdit=false;
+                colorEdit = false;
                 System.out.println("The movie is now in black and white");
             }
         } else {
             System.out.println("I will keep the colorsetting");
-            colorEdit=m.getColor();
+            colorEdit = m.getColor();
         }
         System.out.println("Would you like to edit the length in minutes? Enter yes/no");
         int lengthEdit = m.getLengthInMinutes();
@@ -192,7 +193,7 @@ public class UserInterface {
 
 
         System.out.println("Would you like to edit the genre? Enter yes/no");
-        String genreEdit=m.getGenre();
+        String genreEdit = m.getGenre();
         Edit = scanner.nextLine();
         if (Edit.equals("yes")) {
             System.out.println("type the new genre");
@@ -204,10 +205,43 @@ public class UserInterface {
         }
         movieController.editMovie(movieNumber, titleEdit, directorEdit, yearEdit, colorEdit, lengthEdit, genreEdit);
     }
+
     public void remove() {
         System.out.println("What is the title of the movie you'd like to remove?");
         String title = scanner.next();
         System.out.println(movieController.removeMovie(title));
     }
 
+    private Comparator<Movie> getSortOption() {
+        System.out.println("select an option to sort by:");
+        System.out.println("1. Title");
+        System.out.println("2. Director");
+        System.out.println("3. Year");
+        System.out.println("4. Color");
+        System.out.println("5. Length");
+        System.out.println("6. Genre");
+
+        int userInput = scanner.nextInt();
+
+        switch (userInput) {
+            case 1:
+                return new TitleComparator();
+            case 2:
+                return new DirectorComparator();
+            case 3:
+                return new YearComparator();
+            case 4:
+                return new ColorComparator();
+            case 5:
+                return new LengthComparator();
+            case 6:
+                return new GenreComparator();
+            default:
+                System.out.println("invalid option, default to title");
+                return new TitleComparator();
+        }
+    }
+
 }
+
+

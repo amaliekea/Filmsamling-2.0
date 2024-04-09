@@ -1,17 +1,14 @@
 package domain_model;
-
-import domain_model.Movie;
-
 import java.util.ArrayList;
-//sætter nye værdier ind
-
+import java.util.Comparator;
 public class MovieCollection {
     protected ArrayList<Movie> filmObjekter;
 
     public MovieCollection() {
         filmObjekter = new ArrayList<>();
-        //filmObjekter.add(new domain_model.Movie("hunger games", "james", 2002, true, 120, "science fiction"));
-        //filmObjekter.add(new domain_model.Movie("harry potter", "harry", 2002, true, 120, "science fiction"));
+    }
+    public void sortMoviesBy(Comparator<Movie> movieCompare) {
+        filmObjekter.sort(movieCompare);
     }
 
     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
@@ -71,10 +68,12 @@ public class MovieCollection {
             Movie m = filmObjekter.get(i);
             if (m.getTitle().equalsIgnoreCase(title)) {
                 filmObjekter.remove(i);
-                return "domain_model.Movie removed successfully.";
+                return "Movie removed successfully.";
             }
         }
-        return "domain_model.Movie not found.";
+        return "Movie not found.";
     }
+
+
 }
 

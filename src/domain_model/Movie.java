@@ -1,8 +1,9 @@
 package domain_model;
-
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Movie { //movie klasse med private attributter
+public class Movie { //sammenligne 2 instanser
+
     private String title;
     private String director;
     private int year;
@@ -93,6 +94,9 @@ public class Movie { //movie klasse med private attributter
                 Objects.equals(Color, film.Color) &&
                 Objects.equals(lengthInMinutes, film.lengthInMinutes) &&
                 Objects.equals(genre, film.genre);
+    }
+    public String toCsvString() {
+        return title + "," + director + "," + year + "," + Color + "," + lengthInMinutes + "," + genre;
     }
 
 }

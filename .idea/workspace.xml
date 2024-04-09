@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="setup med test2" />
+    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="US 13 updates">
+      <change afterPath="$PROJECT_DIR$/src/SortData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain_model/ColorComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain_model/DirectorComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain_model/GenreComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain_model/LengthComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain_model/TitleComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain_model/YearComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserInterface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,12 +25,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -35,31 +53,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/amali/IdeaProjects/MovieCollection2.0/src&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/amali/IdeaProjects/MovieCollection2.0/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "Amalie",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/amali/IdeaProjects/MovieCollection2.0/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/amali/IdeaProjects/MovieCollection2.0/src/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\amali\IdeaProjects\MovieCollection2.0" />
+      <recent name="C:\Users\amali\IdeaProjects\MovieCollection2.0\src" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="domain_model" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -69,6 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712131641924</updated>
       <workItem from="1712131642990" duration="1367000" />
+      <workItem from="1712561336483" duration="19042000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -102,17 +138,97 @@
       <option name="project" value="LOCAL" />
       <updated>1712254855830</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="setup med test2">
+      <option name="closed" value="true" />
+      <created>1712255073042</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712255073042</updated>
+    </task>
+    <task id="LOCAL-00006" summary="userstory 10 forslag">
+      <option name="closed" value="true" />
+      <created>1712337257714</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712337257716</updated>
+    </task>
+    <task id="LOCAL-00007" summary="userstory 12 forslag">
+      <option name="closed" value="true" />
+      <created>1712567978898</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712567978898</updated>
+    </task>
+    <task id="LOCAL-00008" summary="userstory 13 forslag">
+      <option name="closed" value="true" />
+      <created>1712572985215</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712572985216</updated>
+    </task>
+    <task id="LOCAL-00009" summary="US updates">
+      <option name="closed" value="true" />
+      <created>1712573778261</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712573778261</updated>
+    </task>
+    <task id="LOCAL-00010" summary="US updates">
+      <option name="closed" value="true" />
+      <created>1712573788457</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712573788457</updated>
+    </task>
+    <task id="LOCAL-00011" summary="US updates">
+      <option name="closed" value="true" />
+      <created>1712595126957</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712595126957</updated>
+    </task>
+    <task id="LOCAL-00012" summary="US 13 updates">
+      <option name="closed" value="true" />
+      <created>1712596775714</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712596775714</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="second&#10;commit" />
     <MESSAGE value="setup packages" />
     <MESSAGE value="setup med test2" />
-    <option name="LAST_COMMIT_MESSAGE" value="setup med test2" />
+    <MESSAGE value="userstory 10 forslag" />
+    <MESSAGE value="userstory 12 forslag" />
+    <MESSAGE value="userstory 13 forslag" />
+    <MESSAGE value="US updates" />
+    <MESSAGE value="US 13 updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="US 13 updates" />
   </component>
 </project>
