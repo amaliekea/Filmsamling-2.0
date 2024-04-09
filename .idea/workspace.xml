@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="US 13 updates">
-      <change afterPath="$PROJECT_DIR$/src/SortData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain_model/ColorComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain_model/DirectorComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain_model/GenreComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain_model/LengthComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain_model/TitleComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain_model/YearComparator.java" afterDir="false" />
+    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="setup packages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movieCollectionTest/domain_model/AddMovieTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/movieCollectionTest/domain_model/AddMovieTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moviecollection.csv" beforeDir="false" afterPath="$PROJECT_DIR$/moviecollection.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Amalie",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/amali/IdeaProjects/MovieCollection2.0/src",
     "node.js.detected.package.eslint": "true",

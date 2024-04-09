@@ -4,6 +4,7 @@ import domain_model.Controller;
 import domain_model.Movie;
 
 import java.util.*;
+
 import domain_model.TitleComparator;
 import domain_model.DirectorComparator;
 import domain_model.YearComparator;
@@ -213,7 +214,7 @@ public class UserInterface {
     }
 
     private Comparator<Movie> getSortOption() {
-        System.out.println("select an option to sort by:");
+        System.out.println("select a primary option to sort by:");
         System.out.println("1. Title");
         System.out.println("2. Director");
         System.out.println("3. Year");
@@ -221,9 +222,29 @@ public class UserInterface {
         System.out.println("5. Length");
         System.out.println("6. Genre");
 
-        int userInput = scanner.nextInt();
+        int primary = scanner.nextInt();
 
-        switch (userInput) {
+        System.out.println("select a secondary option to sort by:");
+        System.out.println("1. Title");
+        System.out.println("2. Director");
+        System.out.println("3. Year");
+        System.out.println("4. Color");
+        System.out.println("5. Length");
+        System.out.println("6. Genre");
+
+        int secondary = scanner.nextInt();
+
+        Comparator<Movie> primaryComparator = getComparatorOption(primary);
+        Comparator<Movie> secondaryComparator = getComparatorOption(secondary);
+
+        return primaryComparator.thenComparing(secondaryComparator);
+
+
+    }
+
+
+    private Comparator<Movie> getComparatorOption(int option) {
+        switch (option) {
             case 1:
                 return new TitleComparator();
             case 2:
@@ -241,6 +262,7 @@ public class UserInterface {
                 return new TitleComparator();
         }
     }
+
 
 }
 
