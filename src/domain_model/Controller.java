@@ -1,5 +1,7 @@
 package domain_model;
+
 import data_source.FileHandler;
+
 import java.util.Comparator;
 
 public class Controller {
@@ -34,13 +36,11 @@ public class Controller {
     public void printMovie(int i) {
         liste.printMovie(i);
     }
+
     public void searchMovie(String title) {
         liste.searchMovie(title);
     }
 
-//    public  searchMovie(String title) {
-//        return liste.searchMovie(title);
-//    }
 
     public Movie getMovie(int movieNumber) {
         return liste.getMovie(movieNumber);
