@@ -17,7 +17,7 @@ class AddMovieTest {
 
         //Act - Execute the method under test with the arranged conditions.
         int expectedMovie = 1;
-        int actualMovie = movieCollection.movieCollection.size();
+        int actualMovie = movieCollection.getMovieCollectionList().size();
 
 
         //Assert -verify the actions's outcome is as expected

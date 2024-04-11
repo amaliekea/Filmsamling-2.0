@@ -1,10 +1,10 @@
 package ui;
-
+// information expert
+// single responsibility princip
 import domain_model.Controller;
 import domain_model.Movie;
 
 import java.util.*;
-
 import domain_model.TitleComparator;
 import domain_model.DirectorComparator;
 import domain_model.YearComparator;
