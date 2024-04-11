@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="test updates">
+    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/DirectorComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/DirectorComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/GenreComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/GenreComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/LengthComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/LengthComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Movie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain_model/MovieCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/MovieCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/TitleComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/TitleComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain_model/YearComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/YearComparator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +100,7 @@
       <updated>1712131641924</updated>
       <workItem from="1712131642990" duration="1367000" />
       <workItem from="1712561336483" duration="19042000" />
-      <workItem from="1712833082596" duration="853000" />
+      <workItem from="1712833082596" duration="2776000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -213,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712833333432</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1712838505035</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712838505035</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +242,7 @@
     <MESSAGE value="US updates" />
     <MESSAGE value="US 13 updates" />
     <MESSAGE value="test updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="test updates" />
+    <MESSAGE value="cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
   </component>
 </project>
