@@ -1,5 +1,4 @@
 package domain_model;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.ArrayList;
 import java.util.Comparator;
 public class MovieCollection {
@@ -47,21 +46,6 @@ public class MovieCollection {
             System.out.println("No matches found in movie collection");
         }
     }
-
-//    public int searchMovie(String title) {
-//        int count = 0; //tæller antal fim der opfylder search
-//        System.out.println("Search results below:");
-//        for (Movie m: filmObjekter) { //for hvert movie objekt m i filmobjekter
-//            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø
-//                count++; //increments count med 1
-//                System.out.println(m.toString()); //printer movie detaljer
-//            }
-//        }
-//        if (count == 0) { //if count 0=no movies found.
-//            System.out.println("No movies found with the given title.");
-//        }
-//        return count;
-//    }
 
     public void editMovie(int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
         Movie m = filmObjekter.get(i);

@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="US 13 updates">
+    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="test updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain_model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/DirectorComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/DirectorComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/GenreComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/GenreComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/LengthComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/LengthComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Movie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain_model/MovieCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/MovieCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/TitleComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/TitleComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain_model/YearComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/YearComparator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +32,13 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Amalie" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LLMProjectSettings">
+    <option name="turned_on" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,6 +58,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AddMovieTest.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -66,7 +75,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/amali/IdeaProjects/MovieCollection2.0/src/Main.java",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
@@ -98,6 +107,7 @@
       <updated>1712131641924</updated>
       <workItem from="1712131642990" duration="1367000" />
       <workItem from="1712561336483" duration="19042000" />
+      <workItem from="1712833082596" duration="853000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -195,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712596775714</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="test updates">
+      <option name="closed" value="true" />
+      <created>1712833333432</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712833333432</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,16 +240,7 @@
     <MESSAGE value="userstory 13 forslag" />
     <MESSAGE value="US updates" />
     <MESSAGE value="US 13 updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="US 13 updates" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.util.InputMismatchException" package="java.util" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="test updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="test updates" />
   </component>
 </project>

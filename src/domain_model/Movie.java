@@ -1,8 +1,7 @@
 package domain_model;
-import java.util.Comparator;
 import java.util.Objects;
 
-public class Movie { //sammenligne 2 instanser
+public class Movie {
 
     private String title;
     private String director;
@@ -12,7 +11,7 @@ public class Movie { //sammenligne 2 instanser
     private String genre;
 
     public Movie(String title, String director, int year, boolean isInColor, int lengthInMinutes, String genre) {
-        this.title = title; //værdierne sættes af konstruktøreren
+        this.title = title;
         this.director = director;
         this.year = year;
         this.Color = isInColor;
@@ -20,7 +19,7 @@ public class Movie { //sammenligne 2 instanser
         this.genre = genre;
     }
 
-    public String getTitle() { //værdier ud gennem getter-metoder
+    public String getTitle() {
         return title;
     }
 
