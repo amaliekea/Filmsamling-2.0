@@ -1,0 +1,94 @@
+Index: moviecollection.csv
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>amalie,hhs,1000,true,81,hshs\r\nac,aaaa,2002,true,28,hshs\r\nper,aaaa,1998,true,18,hshs\r\namalieamalie,aaa,2024,true,78,hshs\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+diff --git a/moviecollection.csv b/moviecollection.csv
+--- a/moviecollection.csv	
++++ b/moviecollection.csv	
+@@ -2,3 +2,4 @@
+ ac,aaaa,2002,true,28,hshs
+ per,aaaa,1998,true,18,hshs
+ amalieamalie,aaa,2024,true,78,hshs
++nytest,fhh,88,true,77,ghfvf
+Index: src/domain_model/MovieCollection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain_model;\r\nimport java.util.ArrayList;\r\nimport java.util.Comparator;\r\npublic class MovieCollection {\r\n    protected ArrayList<Movie> filmObjekter;\r\n\r\n    public MovieCollection() {\r\n        filmObjekter = new ArrayList<>();\r\n    }\r\n    public void sortMoviesBy(Comparator<Movie> movieCompare) {\r\n        filmObjekter.sort(movieCompare);\r\n    }\r\n\r\n    public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {\r\n        filmObjekter.add(new Movie(title, director, year, Color, lengthInMinutes, genre));\r\n\r\n    }\r\n\r\n    public void printMyCollection() {\r\n        for (int i = 0; i < filmObjekter.size(); i++) {\r\n            Movie m = filmObjekter.get(i);\r\n            System.out.println(m.toString());\r\n        }\r\n    }\r\n\r\n    public void printMovie(int i) {\r\n\r\n        if (i < filmObjekter.size() && i >= 0) {\r\n            System.out.println(filmObjekter.get(i));\r\n\r\n        } else {\r\n            System.out.println(\"Venligst indtast et nummer mellem 0 \" + \"og \" + filmObjekter.size());\r\n        }\r\n    }\r\n\r\n    public int searchMovie(String title) {\r\n        int count = 0; //tæller antal fim der opfylder search\r\n        System.out.println(\"Search results below:\");\r\n        for (Movie m: filmObjekter) { //for hvert movie objekt m i filmobjekter\r\n            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø\r\n                count++; //increments count med 1\r\n                System.out.println(m.toString()); //printer movie detaljer\r\n            }\r\n        }\r\n        if (count == 0) { //if count 0=no movies found.\r\n            System.out.println(\"No movies found with the given title.\");\r\n        }\r\n        return count;\r\n    }\r\n\r\n    public void editMovie(int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {\r\n        Movie m = filmObjekter.get(i);\r\n        m.setTitle(title);\r\n        m.setDirector(director);\r\n        m.setYear(year);\r\n        m.setColor(Color);\r\n        m.setLengthInMinutes(lengthInMinutes);\r\n        m.setGenre(genre);\r\n    }\r\n    public Movie getMovie(int movieNumber) {\r\n        return filmObjekter.get(movieNumber);\r\n    }\r\n    public ArrayList<Movie> getMovieCollectionList() {\r\n        return filmObjekter;\r\n    }\r\n    public String removeMovie(String title) {\r\n        for (int i = 0; i < filmObjekter.size(); i++) {\r\n            Movie m = filmObjekter.get(i);\r\n            if (m.getTitle().equalsIgnoreCase(title)) {\r\n                filmObjekter.remove(i);\r\n                return \"Movie removed successfully.\";\r\n            }\r\n        }\r\n        return \"Movie not found.\";\r\n    }\r\n\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/domain_model/MovieCollection.java b/src/domain_model/MovieCollection.java
+--- a/src/domain_model/MovieCollection.java	
++++ b/src/domain_model/MovieCollection.java	
+@@ -1,5 +1,6 @@
+ package domain_model;
+ import java.util.ArrayList;
++import java.util.Collections;
+ import java.util.Comparator;
+ public class MovieCollection {
+     protected ArrayList<Movie> filmObjekter;
+@@ -9,6 +10,7 @@
+     }
+     public void sortMoviesBy(Comparator<Movie> movieCompare) {
+         filmObjekter.sort(movieCompare);
++
+     }
+ 
+     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
+Index: src/ui/UserInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ui;\r\n\r\nimport domain_model.Controller;\r\nimport domain_model.Movie;\r\n\r\nimport java.util.*;\r\nimport domain_model.TitleComparator;\r\nimport domain_model.DirectorComparator;\r\nimport domain_model.YearComparator;\r\nimport domain_model.ColorComparator;\r\nimport domain_model.LengthComparator;\r\nimport domain_model.GenreComparator;\r\n\r\npublic class UserInterface {\r\n    Scanner scanner = new Scanner(System.in);\r\n    Controller movieController = new Controller();\r\n\r\n    public void startProgram() {\r\n        int userChoice = 0;\r\n        int sentinel = 7;\r\n        movieController.loadMovies();\r\n        while (userChoice < sentinel) {\r\n            userChoice = movieMenu();\r\n\r\n            if (userChoice == 1) {\r\n                addMovie();\r\n\r\n            } else if (userChoice == 2) {\r\n                movieController.printCollection(getSortOption());\r\n            } else if (userChoice == 3) {\r\n                int movieNumber = getMovieNumber();\r\n                movieController.printMovie(movieNumber);\r\n\r\n            } else if (userChoice == 4) {\r\n                String title = getTitle();\r\n                movieController.searchMovie(title);\r\n            } else if (userChoice == 5) {\r\n                editMovie();\r\n            } else if (userChoice == 6) {\r\n                remove();\r\n            } else if (userChoice >= sentinel) {\r\n                System.out.println(\"Afsluttet\");\r\n            }\r\n        }\r\n    }\r\n\r\n    private int movieMenu() {\r\n        System.out.println(\"Welcome to my moviecollection!\");\r\n        System.out.println(\"1. Create a movie\");\r\n        System.out.println(\"2. Print the moviecollection\");\r\n        System.out.println(\"3. Print a single movie\");\r\n        System.out.println(\"4. Search movie\");\r\n        System.out.println(\"5. Edit movie\");\r\n        System.out.println(\"6. Remove movie\");\r\n        System.out.println(\"7. Close\");\r\n        int userChoice = scanner.nextInt();\r\n        return userChoice;\r\n    }\r\n\r\n    private void addMovie() {\r\n        System.out.println(\"input movie title\");\r\n        String title = scanner.next();\r\n\r\n        System.out.println(\"input director\");\r\n        String director = scanner.next();\r\n\r\n        System.out.println(\"input year created\");\r\n        int year = 0;\r\n        boolean flag = false;\r\n        while (!flag) {\r\n            try {\r\n                year = scanner.nextInt();\r\n                flag = true;\r\n            } catch (InputMismatchException first) {\r\n                System.out.println(\"fail, try again\");\r\n                System.out.println(\"Input year created agian\");\r\n                scanner.nextLine();\r\n            }\r\n        }\r\n\r\n        boolean color = false;\r\n        System.out.println(\"is the movie in color? yes/no\");\r\n        String erIFarve = scanner.next();\r\n        erIFarve = erIFarve.toLowerCase();\r\n        if (erIFarve.equals(\"yes\")) {\r\n            color = true;\r\n        }\r\n\r\n        System.out.println(\"input length in minutes\");\r\n        int minute = 0;\r\n        boolean flag1 = false;\r\n        while (!flag1) {\r\n            try {\r\n                minute = scanner.nextInt();\r\n                flag1 = true;\r\n            } catch (InputMismatchException second) {\r\n                System.out.println(\"fail, try again\");\r\n                System.out.println(\"Input length in minutes again\");\r\n                scanner.nextLine();\r\n            }\r\n        }\r\n\r\n        System.out.println(\"input genre\");\r\n        String genre = scanner.next();\r\n\r\n        movieController.addMovie(title, director, year, color, minute, genre);\r\n    }\r\n\r\n    private int getMovieNumber() {\r\n        System.out.println(\"What nr. movie would you like to print?\");\r\n        int movieNumber = scanner.nextInt();\r\n        return movieNumber;\r\n    }\r\n\r\n    private String getTitle() {\r\n        System.out.println(\"What is the title of the movie you'd wish to search for?\");\r\n        String title = scanner.next();\r\n        return title;\r\n    }\r\n\r\n    public void editMovie() {\r\n        System.out.println(\"type the number of the movie you want to edit:\");\r\n        int movieNumber = scanner.nextInt();\r\n        movieController.printMovie(movieNumber);\r\n        Movie m = movieController.getMovie(movieNumber);\r\n\r\n\r\n        System.out.println(\"Would you like to edit the title? Enter yes/no\");\r\n        String Edit;\r\n        String titleEdit = m.getTitle();\r\n        Edit = scanner.next();\r\n        scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"Enter the new title;\");\r\n            titleEdit = scanner.nextLine();\r\n            System.out.println(\"The new title is \" + titleEdit);\r\n            m.setTitle(titleEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the title \" + m.getTitle());\r\n        }\r\n        System.out.println(\"Would you like to edit the director? Enter yes/no\");\r\n        String directorEdit = m.getDirector();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"Enter the new director: \");\r\n            directorEdit = scanner.nextLine();\r\n            System.out.println(\"The new director is \" + directorEdit);\r\n            m.setDirector(directorEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the director \" + m.getDirector());\r\n        }\r\n        System.out.println(\"Would you like to edit the year? Enter yes/no\");\r\n        int yearEdit = m.getYear();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"enter the new year: \");\r\n            yearEdit = scanner.nextInt();\r\n            System.out.println(\"The new year is \" + yearEdit);\r\n            m.setYear(yearEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the year \" + m.getYear());\r\n        }\r\n        System.out.println(\"Would you like to edit the color? yes/no\");\r\n        Boolean colorEdit = m.getColor();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"Type yes for color, no for black and white\");\r\n            String colorEditString = scanner.nextLine();\r\n            if (colorEditString.equals(\"yes\")) {\r\n                m.setColor(true);\r\n                colorEdit = true;\r\n                System.out.println(\"The movie is now in color\");\r\n            } else {\r\n                m.setColor(false);\r\n                colorEdit = false;\r\n                System.out.println(\"The movie is now in black and white\");\r\n            }\r\n        } else {\r\n            System.out.println(\"I will keep the colorsetting\");\r\n            colorEdit = m.getColor();\r\n        }\r\n        System.out.println(\"Would you like to edit the length in minutes? Enter yes/no\");\r\n        int lengthEdit = m.getLengthInMinutes();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"type the new length in minutes:\");\r\n            lengthEdit = scanner.nextInt();\r\n            System.out.println(\"The new length is \" + lengthEdit);\r\n            m.setLengthInMinutes(lengthEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the length \" + m.getLengthInMinutes() + \" minutes long\");\r\n        }\r\n\r\n\r\n        System.out.println(\"Would you like to edit the genre? Enter yes/no\");\r\n        String genreEdit = m.getGenre();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"type the new genre\");\r\n            genreEdit = scanner.nextLine();\r\n            System.out.println(\"The new genre is \" + genreEdit);\r\n            m.setGenre(genreEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the genre \" + m.getGenre());\r\n        }\r\n        movieController.editMovie(movieNumber, titleEdit, directorEdit, yearEdit, colorEdit, lengthEdit, genreEdit);\r\n    }\r\n\r\n    public void remove() {\r\n        System.out.println(\"What is the title of the movie you'd like to remove?\");\r\n        String title = scanner.next();\r\n        System.out.println(movieController.removeMovie(title));\r\n    }\r\n\r\n    private Comparator<Movie> getSortOption() {\r\n        System.out.println(\"select an option to sort by:\");\r\n        System.out.println(\"1. Title\");\r\n        System.out.println(\"2. Director\");\r\n        System.out.println(\"3. Year\");\r\n        System.out.println(\"4. Color\");\r\n        System.out.println(\"5. Length\");\r\n        System.out.println(\"6. Genre\");\r\n\r\n        int userInput = scanner.nextInt();\r\n\r\n        switch (userInput) {\r\n            case 1:\r\n                return new TitleComparator();\r\n            case 2:\r\n                return new DirectorComparator();\r\n            case 3:\r\n                return new YearComparator();\r\n            case 4:\r\n                return new ColorComparator();\r\n            case 5:\r\n                return new LengthComparator();\r\n            case 6:\r\n                return new GenreComparator();\r\n            default:\r\n                System.out.println(\"invalid option, default to title\");\r\n                return new TitleComparator();\r\n        }\r\n    }\r\n\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+diff --git a/src/ui/UserInterface.java b/src/ui/UserInterface.java
+--- a/src/ui/UserInterface.java	
++++ b/src/ui/UserInterface.java	
+@@ -4,6 +4,7 @@
+ import domain_model.Movie;
+ 
+ import java.util.*;
++
+ import domain_model.TitleComparator;
+ import domain_model.DirectorComparator;
+ import domain_model.YearComparator;
+@@ -26,6 +27,7 @@
+                 addMovie();
+ 
+             } else if (userChoice == 2) {
++
+                 movieController.printCollection(getSortOption());
+             } else if (userChoice == 3) {
+                 int movieNumber = getMovieNumber();
+@@ -213,6 +215,7 @@
+     }
+ 
+     private Comparator<Movie> getSortOption() {
++
+         System.out.println("select an option to sort by:");
+         System.out.println("1. Title");
+         System.out.println("2. Director");
+@@ -221,9 +224,9 @@
+         System.out.println("5. Length");
+         System.out.println("6. Genre");
+ 
+-        int userInput = scanner.nextInt();
++        int userInput1 = scanner.nextInt();
+ 
+-        switch (userInput) {
++        switch (userInput1) {
+             case 1:
+                 return new TitleComparator();
+             case 2:
+@@ -241,7 +244,6 @@
+                 return new TitleComparator();
+         }
+     }
+-
+ }
+ 
+ 

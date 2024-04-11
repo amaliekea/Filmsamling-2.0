@@ -1,0 +1,33 @@
+Index: src/domain_model/DirectorComparator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain_model;\r\n\r\nimport domain_model.Movie;\r\n\r\nimport java.util.Comparator;\r\n\r\npublic class DirectorComparator implements Comparator <Movie> {\r\n    @Override\r\n    public int compare(Movie movie1, Movie movie2) {\r\n        return movie1.getDirector().compareTo(movie2.getDirector());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+diff --git a/src/domain_model/DirectorComparator.java b/src/domain_model/DirectorComparator.java
+--- a/src/domain_model/DirectorComparator.java	
++++ b/src/domain_model/DirectorComparator.java	
+@@ -1,3 +1,4 @@
++
+ package domain_model;
+ 
+ import domain_model.Movie;
+Index: src/domain_model/MovieCollection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain_model;\r\nimport java.util.ArrayList;\r\nimport java.util.Comparator;\r\npublic class MovieCollection {\r\n    protected ArrayList<Movie> filmObjekter;\r\n\r\n    public MovieCollection() {\r\n        filmObjekter = new ArrayList<>();\r\n    }\r\n    public void sortMoviesBy(Comparator<Movie> movieCompare) {\r\n        filmObjekter.sort(movieCompare);\r\n    }\r\n\r\n    public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {\r\n        filmObjekter.add(new Movie(title, director, year, Color, lengthInMinutes, genre));\r\n\r\n    }\r\n\r\n    public void printMyCollection() {\r\n        for (int i = 0; i < filmObjekter.size(); i++) {\r\n            Movie m = filmObjekter.get(i);\r\n            System.out.println(m.toString());\r\n        }\r\n    }\r\n\r\n    public void printMovie(int i) {\r\n\r\n        if (i < filmObjekter.size() && i >= 0) {\r\n            System.out.println(filmObjekter.get(i));\r\n\r\n        } else {\r\n            System.out.println(\"Venligst indtast et nummer mellem 0 \" + \"og \" + filmObjekter.size());\r\n        }\r\n    }\r\n\r\n    public int searchMovie(String title) {\r\n        int count = 0; //tæller antal fim der opfylder search\r\n        System.out.println(\"Search results below:\");\r\n        for (Movie m: filmObjekter) { //for hvert movie objekt m i filmobjekter\r\n            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø\r\n                count++; //increments count med 1\r\n                System.out.println(m.toString()); //printer movie detaljer\r\n            }\r\n        }\r\n        if (count == 0) { //if count 0=no movies found.\r\n            System.out.println(\"No movies found with the given title.\");\r\n        }\r\n        return count;\r\n    }\r\n\r\n    public void editMovie(int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {\r\n        Movie m = filmObjekter.get(i);\r\n        m.setTitle(title);\r\n        m.setDirector(director);\r\n        m.setYear(year);\r\n        m.setColor(Color);\r\n        m.setLengthInMinutes(lengthInMinutes);\r\n        m.setGenre(genre);\r\n    }\r\n    public Movie getMovie(int movieNumber) {\r\n        return filmObjekter.get(movieNumber);\r\n    }\r\n    public ArrayList<Movie> getMovieCollectionList() {\r\n        return filmObjekter;\r\n    }\r\n    public String removeMovie(String title) {\r\n        for (int i = 0; i < filmObjekter.size(); i++) {\r\n            Movie m = filmObjekter.get(i);\r\n            if (m.getTitle().equalsIgnoreCase(title)) {\r\n                filmObjekter.remove(i);\r\n                return \"Movie removed successfully.\";\r\n            }\r\n        }\r\n        return \"Movie not found.\";\r\n    }\r\n\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/domain_model/MovieCollection.java b/src/domain_model/MovieCollection.java
+--- a/src/domain_model/MovieCollection.java	
++++ b/src/domain_model/MovieCollection.java	
+@@ -11,6 +11,7 @@
+         filmObjekter.sort(movieCompare);
+     }
+ 
++
+     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
+         filmObjekter.add(new Movie(title, director, year, Color, lengthInMinutes, genre));
+ 

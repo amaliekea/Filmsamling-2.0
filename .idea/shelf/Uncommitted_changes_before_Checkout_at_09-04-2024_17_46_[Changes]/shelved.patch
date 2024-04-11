@@ -1,0 +1,141 @@
+Index: src/domain_model/Controller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain_model;\r\nimport data_source.FileHandler;\r\n\r\nimport java.util.Collections;\r\nimport java.util.Comparator;\r\n\r\npublic class Controller {\r\n    private MovieCollection liste;\r\n    private FileHandler filehandler;\r\n\r\n    public Controller() {\r\n        this.filehandler = new FileHandler();\r\n        this.liste = filehandler.loadMovies();\r\n    }\r\n\r\n\r\n    public void addMovie(String title, String director, int year, boolean color, int minute, String genre) {\r\n        liste.addMovie(title, director, year, color, minute, genre);\r\n        System.out.println(\"Movie added successfully!\");\r\n        this.saveMovies();\r\n    }\r\n\r\n    public void printCollection(Comparator<Movie> movieCompare) {\r\n        liste.sortMoviesBy(movieCompare);\r\n        liste.printMyCollection();\r\n    }\r\n\r\n    public void loadMovies() {\r\n        liste = filehandler.loadMovies();\r\n    }\r\n\r\n    public void saveMovies() {\r\n        filehandler.saveListOfMovies(liste);\r\n    }\r\n\r\n    public void printMovie(int i) {\r\n        liste.printMovie(i);\r\n    }\r\n\r\n    public int searchMovie(String title) {\r\n        return liste.searchMovie(title);\r\n    }\r\n\r\n    public Movie getMovie(int movieNumber) {\r\n        return liste.getMovie(movieNumber);\r\n    }\r\n\r\n    public void editMovie(int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {\r\n        liste.editMovie(i, title, director, year, Color, lengthInMinutes, genre);\r\n        this.saveMovies();\r\n    }\r\n\r\n\r\n    public String removeMovie(String title) {\r\n        String r = liste.removeMovie(title);\r\n        this.saveMovies();\r\n        return r;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+diff --git a/src/domain_model/Controller.java b/src/domain_model/Controller.java
+--- a/src/domain_model/Controller.java	
++++ b/src/domain_model/Controller.java	
+@@ -1,7 +1,6 @@
+ package domain_model;
+ import data_source.FileHandler;
+ 
+-import java.util.Collections;
+ import java.util.Comparator;
+ 
+ public class Controller {
+Index: src/domain_model/Movie.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain_model;\r\nimport java.util.Comparator;\r\nimport java.util.Objects;\r\n\r\npublic class Movie { //sammenligne 2 instanser\r\n\r\n    private String title;\r\n    private String director;\r\n    private int year;\r\n    private boolean Color;\r\n    private int lengthInMinutes;\r\n    private String genre;\r\n\r\n    public Movie(String title, String director, int year, boolean isInColor, int lengthInMinutes, String genre) {\r\n        this.title = title; //værdierne sættes af konstruktøreren\r\n        this.director = director;\r\n        this.year = year;\r\n        this.Color = isInColor;\r\n        this.lengthInMinutes = lengthInMinutes;\r\n        this.genre = genre;\r\n    }\r\n\r\n    public String getTitle() { //værdier ud gennem getter-metoder\r\n        return title;\r\n    }\r\n\r\n    public String getDirector() {\r\n        return director;\r\n    }\r\n\r\n    public int getYear() {\r\n        return year;\r\n    }\r\n\r\n    public boolean getColor() {\r\n        return Color;\r\n    }\r\n\r\n    public int getLengthInMinutes() {\r\n        return lengthInMinutes;\r\n    }\r\n\r\n    public String getGenre() {\r\n        return genre;\r\n    }\r\n\r\n    public void setTitle(String title) {\r\n        this.title = title;\r\n    }\r\n\r\n    public void setDirector(String director) {\r\n        this.director = director;\r\n    }\r\n\r\n    public void setYear(int year) {\r\n        this.year = year;\r\n    }\r\n\r\n    public void setColor(boolean color) {\r\n        Color = color;\r\n    }\r\n\r\n    public void setLengthInMinutes(int lengthInMinutes) {\r\n        this.lengthInMinutes = lengthInMinutes;\r\n    }\r\n\r\n    public void setGenre(String genre) {\r\n        this.genre = genre;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        String farve;\r\n        if (this.getColor()) {\r\n            farve = \"The movie is in color\\n\";\r\n        } else {\r\n            farve = \"The movie is in black & white\\n\";\r\n        }\r\n        return  \"The title of the movie: \" + this.getTitle() + \"\\n\" +\r\n                \"The director of the movie: \" + this.getDirector() + \"\\n\" +\r\n                \"The year of the movie: \" + this.getYear() + \"\\n\" +\r\n                farve +\r\n                \"The movie's length in minutes: \" + this.getLengthInMinutes() + \"\\n\" +\r\n                \"The genre of the movie: \" + this.getGenre() + \"\\n\";\r\n    }\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        Movie film = (Movie) o;\r\n        return Objects.equals(title, film.title) &&\r\n                Objects.equals(director, film.director) &&\r\n                Objects.equals(year, film.year) &&\r\n                Objects.equals(Color, film.Color) &&\r\n                Objects.equals(lengthInMinutes, film.lengthInMinutes) &&\r\n                Objects.equals(genre, film.genre);\r\n    }\r\n    public String toCsvString() {\r\n        return title + \",\" + director + \",\" + year + \",\" + Color + \",\" + lengthInMinutes + \",\" + genre;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/domain_model/Movie.java b/src/domain_model/Movie.java
+--- a/src/domain_model/Movie.java	
++++ b/src/domain_model/Movie.java	
+@@ -1,5 +1,4 @@
+ package domain_model;
+-import java.util.Comparator;
+ import java.util.Objects;
+ 
+ public class Movie { //sammenligne 2 instanser
+@@ -12,7 +11,7 @@
+     private String genre;
+ 
+     public Movie(String title, String director, int year, boolean isInColor, int lengthInMinutes, String genre) {
+-        this.title = title; //værdierne sættes af konstruktøreren
++        this.title = title;
+         this.director = director;
+         this.year = year;
+         this.Color = isInColor;
+@@ -20,7 +19,7 @@
+         this.genre = genre;
+     }
+ 
+-    public String getTitle() { //værdier ud gennem getter-metoder
++    public String getTitle() {
+         return title;
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f41eb87c-fdc2-4d60-945a-f9c275fbc275\" name=\"Changes\" comment=\"US 13 updates\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/SortData.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/domain_model/ColorComparator.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/domain_model/DirectorComparator.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/domain_model/GenreComparator.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/domain_model/LengthComparator.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/domain_model/TitleComparator.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/domain_model/YearComparator.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/domain_model/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/domain_model/Controller.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/domain_model/Movie.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/domain_model/Movie.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/ui/UserInterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/ui/UserInterface.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit5 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PUSH_AUTO_UPDATE\" value=\"true\" />\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ea95QFQfbvCVEoPONtoSm9Znf3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"Downloaded.Files.Path.Enabled\": \"false\",\r\n    \"Repository.Attach.Annotations\": \"false\",\r\n    \"Repository.Attach.JavaDocs\": \"false\",\r\n    \"Repository.Attach.Sources\": \"false\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\": \"JUnit5\",\r\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5\": \"\",\r\n    \"git-widget-placeholder\": \"Amalie\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_directory_selection\": \"C:/Users/amali/IdeaProjects/MovieCollection2.0/src\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"onboarding.tips.debug.path\": \"C:/Users/amali/IdeaProjects/MovieCollection2.0/src/Main.java\",\r\n    \"project.structure.last.edited\": \"Libraries\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\amali\\IdeaProjects\\MovieCollection2.0\" />\r\n      <recent name=\"C:\\Users\\amali\\IdeaProjects\\MovieCollection2.0\\src\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"domain_model\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f41eb87c-fdc2-4d60-945a-f9c275fbc275\" name=\"Changes\" comment=\"\" />\r\n      <created>1712131641924</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1712131641924</updated>\r\n      <workItem from=\"1712131642990\" duration=\"1367000\" />\r\n      <workItem from=\"1712561336483\" duration=\"19042000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"first commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712131685161</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712131685161</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"second&#10;commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712131883944</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712131883944</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"setup packages\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712132035021</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712132035021</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"setup med test2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712254855829</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712254855830</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"setup med test2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712255073042</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712255073042</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"userstory 10 forslag\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712337257714</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712337257716</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"userstory 12 forslag\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712567978898</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712567978898</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"userstory 13 forslag\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712572985215</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712572985216</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"US updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712573778261</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712573778261</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"US updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712573788457</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712573788457</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"US updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712595126957</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712595126957</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"US 13 updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712596775714</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712596775714</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"first commit\" />\r\n    <MESSAGE value=\"second&#10;commit\" />\r\n    <MESSAGE value=\"setup packages\" />\r\n    <MESSAGE value=\"setup med test2\" />\r\n    <MESSAGE value=\"userstory 10 forslag\" />\r\n    <MESSAGE value=\"userstory 12 forslag\" />\r\n    <MESSAGE value=\"userstory 13 forslag\" />\r\n    <MESSAGE value=\"US updates\" />\r\n    <MESSAGE value=\"US 13 updates\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"US 13 updates\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,17 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="US 13 updates">
+-      <change afterPath="$PROJECT_DIR$/src/SortData.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/domain_model/ColorComparator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/domain_model/DirectorComparator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/domain_model/GenreComparator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/domain_model/LengthComparator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/domain_model/TitleComparator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/domain_model/YearComparator.java" afterDir="false" />
++    <list default="true" id="f41eb87c-fdc2-4d60-945a-f9c275fbc275" name="Changes" comment="updates seperate comparators">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/moviecollection.csv" beforeDir="false" afterPath="$PROJECT_DIR$/moviecollection.csv" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/domain_model/ColorComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/ColorComparator.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/domain_model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Controller.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/domain_model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/Movie.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/domain_model/MovieCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain_model/MovieCollection.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserInterface.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -104,7 +100,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1712131641924</updated>
+       <workItem from="1712131642990" duration="1367000" />
+-      <workItem from="1712561336483" duration="19042000" />
++      <workItem from="1712561336483" duration="26468000" />
+     </task>
+     <task id="LOCAL-00001" summary="first commit">
+       <option name="closed" value="true" />
+@@ -202,7 +198,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1712596775714</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="updates seperate comparators">
++      <option name="closed" value="true" />
++      <created>1712664817575</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1712664817575</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -229,6 +233,7 @@
+     <MESSAGE value="userstory 13 forslag" />
+     <MESSAGE value="US updates" />
+     <MESSAGE value="US 13 updates" />
+-    <option name="LAST_COMMIT_MESSAGE" value="US 13 updates" />
++    <MESSAGE value="updates seperate comparators" />
++    <option name="LAST_COMMIT_MESSAGE" value="updates seperate comparators" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/domain_model/ColorComparator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain_model;\r\n\r\nimport domain_model.Movie;\r\n\r\nimport java.util.Comparator;\r\n\r\npublic class ColorComparator implements Comparator <Movie> {\r\n    @Override\r\n    public int compare(Movie movie1, Movie movie2) {\r\n        return Boolean.compare(movie1.getColor(), movie2.getColor());\r\n    }\r\n}
+===================================================================
+diff --git a/src/domain_model/ColorComparator.java b/src/domain_model/ColorComparator.java
+--- a/src/domain_model/ColorComparator.java	
++++ b/src/domain_model/ColorComparator.java	
+@@ -4,9 +4,9 @@
+ 
+ import java.util.Comparator;
+ 
+-public class ColorComparator implements Comparator <Movie> {
++public class ColorComparator implements Comparator<Movie> {
+     @Override
+-    public int compare(Movie movie1, Movie movie2) {
++    public int compare (Movie movie1, Movie movie2) {
+         return Boolean.compare(movie1.getColor(), movie2.getColor());
+     }
+ }
+\ No newline at end of file

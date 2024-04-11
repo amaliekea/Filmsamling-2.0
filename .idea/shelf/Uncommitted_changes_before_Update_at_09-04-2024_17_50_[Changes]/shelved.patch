@@ -1,0 +1,122 @@
+Index: src/ui/UserInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ui;\r\n\r\nimport domain_model.Controller;\r\nimport domain_model.Movie;\r\n\r\nimport java.util.InputMismatchException;\r\nimport java.util.Scanner;\r\n//skaffer brugerinput\r\n\r\npublic class UserInterface {\r\n    Scanner scanner = new Scanner(System.in);\r\n    Controller movieController = new Controller();\r\n\r\n    public void startProgram() {\r\n        int userChoice = 0;\r\n        int sentinel = 7;\r\n        movieController.loadMovies();\r\n        while (userChoice < sentinel) {\r\n            userChoice = movieMenu();\r\n\r\n            if (userChoice == 1) {\r\n                addMovie();\r\n\r\n            } else if (userChoice == 2) {\r\n                movieController.printCollection();\r\n\r\n            } else if (userChoice == 3) {\r\n                int movieNumber = getMovieNumber();\r\n                movieController.printMovie(movieNumber);\r\n\r\n            } else if (userChoice == 4) {\r\n                String title = getTitle();\r\n                movieController.searchMovie(title);\r\n            } else if (userChoice == 5) {\r\n                editMovie();\r\n            } else if (userChoice == 6) {\r\n                remove();\r\n            } else if (userChoice >= sentinel) {\r\n                movieController.saveMovies();\r\n                System.out.println(\"Afsluttet\");\r\n            }\r\n        }\r\n    }\r\n\r\n    private int movieMenu() {\r\n        System.out.println(\"Welcome to my moviecollection!\");\r\n        System.out.println(\"1. Create a movie\");\r\n        System.out.println(\"2. Print the moviecollection\");\r\n        System.out.println(\"3. Print a single movie\");\r\n        System.out.println(\"4. Search movie\");\r\n        System.out.println(\"5. Edit movie\");\r\n        System.out.println(\"6. Remove movie\");\r\n        System.out.println(\"7. Close\");\r\n        int userChoice = scanner.nextInt();\r\n        return userChoice;\r\n    }\r\n\r\n    private void addMovie() {\r\n        System.out.println(\"input movie title\");\r\n        String title = scanner.next();\r\n\r\n        System.out.println(\"input director\");\r\n        String director = scanner.next();\r\n\r\n        System.out.println(\"input year created\");\r\n        int year = 0;\r\n        boolean flag = false;\r\n        while (!flag) {\r\n            try {\r\n                year = scanner.nextInt();\r\n                flag = true;\r\n            } catch (InputMismatchException first) {\r\n                System.out.println(\"fail, try again\");\r\n                System.out.println(\"Input year created agian\");\r\n                scanner.nextLine();\r\n            }\r\n        }\r\n\r\n        boolean color = false;\r\n        System.out.println(\"is the movie in color? yes/no\");\r\n        String erIFarve = scanner.next();\r\n        erIFarve = erIFarve.toLowerCase();\r\n        if (erIFarve.equals(\"yes\")) {\r\n            color = true;\r\n        }\r\n\r\n        System.out.println(\"input length in minutes\");\r\n        int minute = 0;\r\n        boolean flag1 = false;\r\n        while (!flag1) {\r\n            try {\r\n                minute = scanner.nextInt();\r\n                flag1 = true;\r\n            } catch (InputMismatchException second) {\r\n                System.out.println(\"fail, try again\");\r\n                System.out.println(\"Input length in minutes again\");\r\n                scanner.nextLine();\r\n            }\r\n        }\r\n\r\n        System.out.println(\"input genre\");\r\n        String genre = scanner.next();\r\n\r\n        movieController.addMovie(title, director, year, color, minute, genre);\r\n    }\r\n\r\n    private int getMovieNumber() {\r\n        System.out.println(\"What nr. movie would you like to print?\");\r\n        int movieNumber = scanner.nextInt();\r\n        return movieNumber;\r\n    }\r\n\r\n    private String getTitle() {\r\n        System.out.println(\"What is the title of the movie you'd wish to search for?\");\r\n        String title = scanner.next();\r\n        return title;\r\n    }\r\n\r\n    public void editMovie() {\r\n        System.out.println(\"type the number of the movie you want to edit:\");\r\n        int movieNumber = scanner.nextInt();\r\n        movieController.printMovie(movieNumber);\r\n        Movie m = movieController.getMovie(movieNumber);\r\n\r\n\r\n        System.out.println(\"Would you like to edit the title? Enter yes/no\");\r\n        String Edit;\r\n        String titleEdit = m.getTitle();\r\n        Edit = scanner.next();\r\n        scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"Enter the new title;\");\r\n            titleEdit = scanner.nextLine();\r\n            System.out.println(\"The new title is \" + titleEdit);\r\n            m.setTitle(titleEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the title \" + m.getTitle());\r\n        }\r\n        System.out.println(\"Would you like to edit the director? Enter yes/no\");\r\n        String directorEdit = m.getDirector();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"Enter the new director: \");\r\n            directorEdit = scanner.nextLine();\r\n            System.out.println(\"The new director is \" + directorEdit);\r\n            m.setDirector(directorEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the director \" + m.getDirector());\r\n        }\r\n        System.out.println(\"Would you like to edit the year? Enter yes/no\");\r\n        int yearEdit = m.getYear();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"enter the new year: \");\r\n            yearEdit = scanner.nextInt();\r\n            System.out.println(\"The new year is \" + yearEdit);\r\n            m.setYear(yearEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the year \" + m.getYear());\r\n        }\r\n        System.out.println(\"Would you like to edit the color? yes/no\");\r\n        Boolean colorEdit = m.getColor();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"Type yes for color, no for black and white\");\r\n            String colorEditString = scanner.nextLine();\r\n            if (colorEditString.equals(\"yes\")) {\r\n                m.setColor(true);\r\n                colorEdit = true;\r\n                System.out.println(\"The movie is now in color\");\r\n            } else {\r\n                m.setColor(false);\r\n                colorEdit = false;\r\n                System.out.println(\"The movie is now in black and white\");\r\n            }\r\n        } else {\r\n            System.out.println(\"I will keep the colorsetting\");\r\n            colorEdit = m.getColor();\r\n        }\r\n        System.out.println(\"Would you like to edit the length in minutes? Enter yes/no\");\r\n        int lengthEdit = m.getLengthInMinutes();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"type the new length in minutes:\");\r\n            lengthEdit = scanner.nextInt();\r\n            System.out.println(\"The new length is \" + lengthEdit);\r\n            m.setLengthInMinutes(lengthEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the length \" + m.getLengthInMinutes() + \" minutes long\");\r\n        }\r\n\r\n\r\n        System.out.println(\"Would you like to edit the genre? Enter yes/no\");\r\n        String genreEdit = m.getGenre();\r\n        Edit = scanner.nextLine();\r\n        if (Edit.equals(\"yes\")) {\r\n            System.out.println(\"type the new genre\");\r\n            genreEdit = scanner.nextLine();\r\n            System.out.println(\"The new genre is \" + genreEdit);\r\n            m.setGenre(genreEdit);\r\n        } else {\r\n            System.out.println(\"I will keep the genre \" + m.getGenre());\r\n        }\r\n        movieController.editMovie(movieNumber, titleEdit, directorEdit, yearEdit, colorEdit, lengthEdit, genreEdit);\r\n    }\r\n\r\n    public void remove() {\r\n        System.out.println(\"What is the title of the movie you'd like to remove?\");\r\n        String title = scanner.next();\r\n        System.out.println(movieController.removeMovie(title));\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+diff --git a/src/ui/UserInterface.java b/src/ui/UserInterface.java
+--- a/src/ui/UserInterface.java	(revision f78fc46ef87dbc39fc4743aa42c992b0343a47f8)
++++ b/src/ui/UserInterface.java	(date 1712677748889)
+@@ -1,11 +1,17 @@
++
+ package ui;
+ 
+ import domain_model.Controller;
+ import domain_model.Movie;
+ 
+-import java.util.InputMismatchException;
+-import java.util.Scanner;
+-//skaffer brugerinput
++import java.util.*;
++
++import domain_model.TitleComparator;
++import domain_model.DirectorComparator;
++import domain_model.YearComparator;
++import domain_model.ColorComparator;
++import domain_model.LengthComparator;
++import domain_model.GenreComparator;
+ 
+ public class UserInterface {
+     Scanner scanner = new Scanner(System.in);
+@@ -22,8 +28,7 @@
+                 addMovie();
+ 
+             } else if (userChoice == 2) {
+-                movieController.printCollection();
+-
++                movieController.printCollection(getSortOption());
+             } else if (userChoice == 3) {
+                 int movieNumber = getMovieNumber();
+                 movieController.printMovie(movieNumber);
+@@ -36,7 +41,6 @@
+             } else if (userChoice == 6) {
+                 remove();
+             } else if (userChoice >= sentinel) {
+-                movieController.saveMovies();
+                 System.out.println("Afsluttet");
+             }
+         }
+@@ -210,4 +214,55 @@
+         System.out.println(movieController.removeMovie(title));
+     }
+ 
++    private Comparator<Movie> getSortOption() {
++        System.out.println("select a primary option to sort by:");
++        System.out.println("1. Title");
++        System.out.println("2. Director");
++        System.out.println("3. Year");
++        System.out.println("4. Color");
++        System.out.println("5. Length");
++        System.out.println("6. Genre");
++
++        int primary = scanner.nextInt();
++
++        System.out.println("select a secondary option to sort by:");
++        System.out.println("1. Title");
++        System.out.println("2. Director");
++        System.out.println("3. Year");
++        System.out.println("4. Color");
++        System.out.println("5. Length");
++        System.out.println("6. Genre");
++
++        int secondary = scanner.nextInt();
++
++        Comparator<Movie> primaryComparator = getComparatorOption(primary);
++        Comparator<Movie> secondaryComparator = getComparatorOption(secondary);
++
++        return primaryComparator.thenComparing(secondaryComparator);
++
++
++    }
++
++
++    private Comparator<Movie> getComparatorOption(int option) {
++        switch (option) {
++            case 1:
++                return new TitleComparator();
++            case 2:
++                return new DirectorComparator();
++            case 3:
++                return new YearComparator();
++            case 4:
++                return new ColorComparator();
++            case 5:
++                return new LengthComparator();
++            case 6:
++                return new GenreComparator();
++            default:
++                System.out.println("invalid option, default to title");
++                return new TitleComparator();
++        }
++    }
++
++
+ }
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(date 1712677736124)
++++ b/.idea/encodings.xml	(date 1712677736124)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="PROJECT" charset="windows-1252" />
++  </component>
++</project>
+\ No newline at end of file
