@@ -27,7 +27,6 @@ public class MovieCollection {
 
         if (i < filmObjekter.size() && i >= 0) {
             System.out.println(filmObjekter.get(i));
-
         } else {
             System.out.println("Venligst indtast et nummer mellem 0 " + "og " + filmObjekter.size());
         }
@@ -72,7 +71,5 @@ public class MovieCollection {
         }
         return "Movie not found.";
     }
-
-
 }
 
