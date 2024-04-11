@@ -14,9 +14,11 @@ class MovieCollectionTest {
         movieCollection.addMovie("Kill Bill", "Zuhur", 2001, true, 120, "Action");
 
         //Act
+        movieCollection.searchMovie("Kill Bill");
 
         int expectedSize = 1;
         int actualMovie = movieCollection.getMovieCollectionList().size();
+        Assertions.assertEquals(expectedSize, actualMovie);
 
 
 
@@ -26,6 +28,13 @@ class MovieCollectionTest {
 
     @Test
     void editMovie() {
+        //Arrange
+        MovieCollection movieCollection = new MovieCollection();
+        movieCollection.addMovie("Kill Bill", "Zuhur", 2001, true, 120, "Action");
+        movieCollection.addMovie("Bandit", "WHO", 2022, true, 210, "Comedy");
+
+
+
     }
 
     @Test
