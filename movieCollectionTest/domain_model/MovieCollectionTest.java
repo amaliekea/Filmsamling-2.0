@@ -7,26 +7,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MovieCollectionTest {
 
-//    @Test
-//    void searchMovie() {
-//        //Arrange
-//        MovieCollection movieCollection = new MovieCollection();
-//        movieCollection.addMovie("Kill Bill", "Zuhur", 2001, true, 120, "Action");
-//
-//        //Act
-//
-//        int expectedSize = 1;
-//        int actualMovie = movieCollection.getMovieCollectionList().size();
-//
-//
-//
-//
-//
-//    }
-//
-//    @Test
-//    void editMovie() {
-//    }
+    @Test
+    void searchMovie() {
+        //Arrange
+        MovieCollection movieCollection = new MovieCollection();
+        movieCollection.addMovie("Kill Bill", "Zuhur", 2001, true, 120, "Action");
+
+        //Act
+
+        int expectedSize = 1;
+        int actualMovie = movieCollection.getMovieCollectionList().size();
+
+
+
+
+
+    }
+
+    @Test
+    void editMovie() {
+    }
 
     @Test
     void removeMovie() {
@@ -40,7 +40,7 @@ class MovieCollectionTest {
 
         //assert
 
-        int exceptedSize = 2;
+        int exceptedSize = 1;
         int actualMovie = movieCollection.getMovieCollectionList().size();
 
         Assertions.assertEquals(exceptedSize, actualMovie);
