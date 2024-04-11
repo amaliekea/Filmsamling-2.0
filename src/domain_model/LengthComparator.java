@@ -1,7 +1,5 @@
 package domain_model;
 
-import domain_model.Movie;
-
 import java.util.Comparator;
 
 public class LengthComparator implements Comparator <Movie> {

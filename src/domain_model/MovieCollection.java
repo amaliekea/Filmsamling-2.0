@@ -34,15 +34,15 @@ public class MovieCollection {
     }
 
     public int searchMovie(String title) {
-        int count = 0; //tæller antal fim der opfylder search
+        int count = 0;
         System.out.println("Search results below:");
-        for (Movie m: filmObjekter) { //for hvert movie objekt m i filmobjekter
-            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø
-                count++; //increments count med 1
-                System.out.println(m.toString()); //printer movie detaljer
+        for (Movie m: filmObjekter) {
+            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                count++;
+                System.out.println(m.toString());
             }
         }
-        if (count == 0) { //if count 0=no movies found.
+        if (count == 0) {
             System.out.println("No movies found with the given title.");
         }
         return count;
