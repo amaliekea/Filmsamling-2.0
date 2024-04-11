@@ -36,10 +36,13 @@ public class Controller {
     public void printMovie(int i) {
         liste.printMovie(i);
     }
-
-    public int searchMovie(String title) {
-        return liste.searchMovie(title);
+    public void searchMovie(String title) {
+        liste.searchMovie(title);
     }
+
+//    public  searchMovie(String title) {
+//        return liste.searchMovie(title);
+//    }
 
     public Movie getMovie(int movieNumber) {
         return liste.getMovie(movieNumber);

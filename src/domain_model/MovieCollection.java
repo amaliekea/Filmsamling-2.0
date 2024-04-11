@@ -1,4 +1,5 @@
 package domain_model;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.ArrayList;
 import java.util.Comparator;
 public class MovieCollection {
@@ -32,21 +33,35 @@ public class MovieCollection {
             System.out.println("Venligst indtast et nummer mellem 0 " + "og " + filmObjekter.size());
         }
     }
+    public void searchMovie(String title) {
+        boolean hasFound = false;
+        System.out.println("Search results can be seen below:");
 
-    public int searchMovie(String title) {
-        int count = 0; //tæller antal fim der opfylder search
-        System.out.println("Search results below:");
-        for (Movie m: filmObjekter) { //for hvert movie objekt m i filmobjekter
-            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø
-                count++; //increments count med 1
-                System.out.println(m.toString()); //printer movie detaljer
+        for (Movie m : filmObjekter) {
+            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                System.out.println(m);
+                hasFound = true;
             }
         }
-        if (count == 0) { //if count 0=no movies found.
-            System.out.println("No movies found with the given title.");
+        if (!hasFound) {
+            System.out.println("No matches found in movie collection");
         }
-        return count;
     }
+
+//    public int searchMovie(String title) {
+//        int count = 0; //tæller antal fim der opfylder search
+//        System.out.println("Search results below:");
+//        for (Movie m: filmObjekter) { //for hvert movie objekt m i filmobjekter
+//            if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø
+//                count++; //increments count med 1
+//                System.out.println(m.toString()); //printer movie detaljer
+//            }
+//        }
+//        if (count == 0) { //if count 0=no movies found.
+//            System.out.println("No movies found with the given title.");
+//        }
+//        return count;
+//    }
 
     public void editMovie(int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
         Movie m = filmObjekter.get(i);

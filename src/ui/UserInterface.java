@@ -1,10 +1,12 @@
 package ui;
 // information expert
 // single responsibility princip
+
 import domain_model.Controller;
 import domain_model.Movie;
 
 import java.util.*;
+
 import domain_model.TitleComparator;
 import domain_model.DirectorComparator;
 import domain_model.YearComparator;
@@ -33,8 +35,7 @@ public class UserInterface {
                 movieController.printMovie(movieNumber);
 
             } else if (userChoice == 4) {
-                String title = getTitle();
-                movieController.searchMovie(title);
+                searchMovie();
             } else if (userChoice == 5) {
                 editMovie();
             } else if (userChoice == 6) {
@@ -46,24 +47,38 @@ public class UserInterface {
     }
 
     private int movieMenu() {
-        System.out.println("Welcome to my moviecollection!");
-        System.out.println("1. Create a movie");
-        System.out.println("2. Print the moviecollection");
-        System.out.println("3. Print a single movie");
-        System.out.println("4. Search movie");
-        System.out.println("5. Edit movie");
-        System.out.println("6. Remove movie");
-        System.out.println("7. Close");
-        int userChoice = scanner.nextInt();
+        boolean inputValid;
+        int userChoice = -1;
+        do {
+            try {
+                System.out.println("Welcome to my moviecollection!");
+                System.out.println("1. Create a movie");
+                System.out.println("2. Print the moviecollection");
+                System.out.println("3. Print a single movie");
+                System.out.println("4. Search movie");
+                System.out.println("5. Edit movie");
+                System.out.println("6. Remove movie");
+                System.out.println("7. Close");
+                userChoice = scanner.nextInt();
+                inputValid = true;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter an integer.");
+                scanner.nextLine(); // Clear the scanner input
+                inputValid = false;
+            }
+        } while (!inputValid);
+        scanner.nextLine();
         return userChoice;
     }
 
+
     private void addMovie() {
         System.out.println("input movie title");
-        String title = scanner.next();
+        String title = scanner.nextLine();
 
         System.out.println("input director");
-        String director = scanner.next();
+        String director = scanner.nextLine();
 
         System.out.println("input year created");
         int year = 0;
@@ -108,16 +123,19 @@ public class UserInterface {
     }
 
     private int getMovieNumber() {
+
         System.out.println("What nr. movie would you like to print?");
         int movieNumber = scanner.nextInt();
+        scanner.nextLine();   // Consume newline character
         return movieNumber;
     }
 
-    private String getTitle() {
-        System.out.println("What is the title of the movie you'd wish to search for?");
-        String title = scanner.next();
-        return title;
+    private void searchMovie() {
+        System.out.print("Enter search: ");
+        String search = scanner.nextLine();
+        movieController.searchMovie(search);
     }
+
 
     public void editMovie() {
         System.out.println("type the number of the movie you want to edit:");
