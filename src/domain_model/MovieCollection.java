@@ -1,14 +1,96 @@
 package domain_model;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
+
 public class MovieCollection {
     protected ArrayList<Movie> filmObjekter;
+    Scanner scanner = new Scanner(System.in);
+
 
     public MovieCollection() {
         filmObjekter = new ArrayList<>();
     }
     public void sortMoviesBy(Comparator<Movie> movieCompare) {
         filmObjekter.sort(movieCompare);
+    }
+    public void editMovie(String title) {
+        boolean continueEditing = true;
+
+        while (continueEditing) {
+            boolean hasFound = false;
+
+            for (Movie m : filmObjekter) {
+                if (m.getTitle().equalsIgnoreCase(title)) {
+                    System.out.println("Enter new movie details:");
+                    System.out.print("Director: ");
+                    String newDirector = scanner.nextLine();
+                    System.out.print("Year: ");
+                    int newYear = getIntegerInput();
+                    System.out.print("Genre: ");
+                    String newGenre = scanner.nextLine();
+                    System.out.print("Is movie in color? Type yes or no: ");
+                    String newColor = scanner.nextLine().toLowerCase();
+                    boolean newIsInColor = newColor.equals("yes");
+                    System.out.print("Length in minutes: ");
+                    int newLengthInMinutes = getIntegerInput();
+
+                    // Update new movie details:
+                    m.setDirector(newDirector);
+                    m.setYear(newYear);
+                    m.setGenre(newGenre);
+                    m.setColor(newIsInColor);
+                    m.setLengthInMinutes(newLengthInMinutes);
+
+                    System.out.println("domain_model.Movie details updated.");
+                    System.out.println(m.toString());
+                    hasFound = true;
+                }
+            }
+            if (!hasFound) {
+                System.out.println("No movies found to edit.");
+            }
+            System.out.println("Would you like to edit further? Type yes or no:");
+            String userChoice = scanner.nextLine();
+            continueEditing = userChoice.equalsIgnoreCase("yes");
+
+            if (continueEditing) {
+                System.out.print("Enter title to edit: ");
+                title = scanner.nextLine();
+            } else {
+                System.out.println("Program has ended");
+                // scanner.close(); // Avoid closing scanner to keep it open for further input
+            }
+        }
+    }
+    private String getStringInput() {
+        return scanner.nextLine().trim();
+    }
+
+    private int getIntegerInput() {
+        int value;
+        while (true) {
+            try {
+                value = Integer.parseInt(getStringInput());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter an integer value:");
+            }
+        }
+        return value;
+    }
+
+    private double getDoubleInput() {
+        double value;
+        while (true) {
+            try {
+                value = Double.parseDouble(getStringInput());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a numeric value:");
+            }
+        }
+        return value;
     }
 
     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
@@ -46,15 +128,7 @@ public class MovieCollection {
         }
     }
 
-    public void editMovie(int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
-        Movie m = filmObjekter.get(i);
-        m.setTitle(title);
-        m.setDirector(director);
-        m.setYear(year);
-        m.setColor(Color);
-        m.setLengthInMinutes(lengthInMinutes);
-        m.setGenre(genre);
-    }
+
     public Movie getMovie(int movieNumber) {
         return filmObjekter.get(movieNumber);
     }

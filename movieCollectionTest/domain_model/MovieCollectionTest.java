@@ -33,6 +33,9 @@ class MovieCollectionTest {
         movieCollection.addMovie("Kill Bill", "Zuhur", 2001, true, 120, "Action");
         movieCollection.addMovie("Bandit", "WHO", 2022, true, 210, "Comedy");
 
+        //act
+
+
 
 
     }

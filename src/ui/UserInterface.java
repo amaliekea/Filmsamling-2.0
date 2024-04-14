@@ -41,7 +41,10 @@ public class UserInterface {
             } else if (userChoice == 6) {
                 remove();
             } else if (userChoice >= sentinel) {
-                System.out.println("Afsluttet");
+                System.out.println("------------------------------------------------------");
+                System.out.println("              Exiting Movie Collection                ");
+                System.out.println("------------------------------------------------------");
+
             }
         }
     }
@@ -72,55 +75,30 @@ public class UserInterface {
         return userChoice;
     }
 
-
     private void addMovie() {
-        System.out.println("input movie title");
+        System.out.println("---------Add film details below---------");
+
+        System.out.print("Title: ");
         String title = scanner.nextLine();
 
-        System.out.println("input director");
+        System.out.print("Director: ");
         String director = scanner.nextLine();
 
-        System.out.println("input year created");
-        int year = 0;
-        boolean flag = false;
-        while (!flag) {
-            try {
-                year = scanner.nextInt();
-                flag = true;
-            } catch (InputMismatchException first) {
-                System.out.println("fail, try again");
-                System.out.println("Input year created agian");
-                scanner.nextLine();
-            }
-        }
+        System.out.print("Year: ");
+        int year = getIntegerInput();
 
-        boolean color = false;
-        System.out.println("is the movie in color? yes/no");
-        String erIFarve = scanner.next();
-        erIFarve = erIFarve.toLowerCase();
-        if (erIFarve.equals("yes")) {
-            color = true;
-        }
+        System.out.print("Genre: ");
+        String genre = scanner.nextLine();
 
-        System.out.println("input length in minutes");
-        int minute = 0;
-        boolean flag1 = false;
-        while (!flag1) {
-            try {
-                minute = scanner.nextInt();
-                flag1 = true;
-            } catch (InputMismatchException second) {
-                System.out.println("fail, try again");
-                System.out.println("Input length in minutes again");
-                scanner.nextLine();
-            }
-        }
+        System.out.print("Is the movie in color? Type yes/no: ");
+        boolean color = scanner.nextLine().equalsIgnoreCase("yes");
 
-        System.out.println("input genre");
-        String genre = scanner.next();
+        System.out.print("Length in minutes: ");
+        int minute = getIntegerInput();
 
         movieController.addMovie(title, director, year, color, minute, genre);
     }
+
 
     private int getMovieNumber() {
 
@@ -136,94 +114,49 @@ public class UserInterface {
         movieController.searchMovie(search);
     }
 
-
-    public void editMovie() {
-        System.out.println("type the number of the movie you want to edit:");
-        int movieNumber = scanner.nextInt();
-        movieController.printMovie(movieNumber);
-        Movie m = movieController.getMovie(movieNumber);
-
-
-        System.out.println("Would you like to edit the title? Enter yes/no");
-        String Edit;
-        String titleEdit = m.getTitle();
-        Edit = scanner.next();
-        scanner.nextLine();
-        if (Edit.equals("yes")) {
-            System.out.println("Enter the new title;");
-            titleEdit = scanner.nextLine();
-            System.out.println("The new title is " + titleEdit);
-            m.setTitle(titleEdit);
-        } else {
-            System.out.println("I will keep the title " + m.getTitle());
-        }
-        System.out.println("Would you like to edit the director? Enter yes/no");
-        String directorEdit = m.getDirector();
-        Edit = scanner.nextLine();
-        if (Edit.equals("yes")) {
-            System.out.println("Enter the new director: ");
-            directorEdit = scanner.nextLine();
-            System.out.println("The new director is " + directorEdit);
-            m.setDirector(directorEdit);
-        } else {
-            System.out.println("I will keep the director " + m.getDirector());
-        }
-        System.out.println("Would you like to edit the year? Enter yes/no");
-        int yearEdit = m.getYear();
-        Edit = scanner.nextLine();
-        if (Edit.equals("yes")) {
-            System.out.println("enter the new year: ");
-            yearEdit = scanner.nextInt();
-            System.out.println("The new year is " + yearEdit);
-            m.setYear(yearEdit);
-        } else {
-            System.out.println("I will keep the year " + m.getYear());
-        }
-        System.out.println("Would you like to edit the color? yes/no");
-        Boolean colorEdit = m.getColor();
-        Edit = scanner.nextLine();
-        if (Edit.equals("yes")) {
-            System.out.println("Type yes for color, no for black and white");
-            String colorEditString = scanner.nextLine();
-            if (colorEditString.equals("yes")) {
-                m.setColor(true);
-                colorEdit = true;
-                System.out.println("The movie is now in color");
-            } else {
-                m.setColor(false);
-                colorEdit = false;
-                System.out.println("The movie is now in black and white");
+    private String getStringInput() {
+        try {
+            String inputString = scanner.nextLine().trim().toLowerCase();
+            if (inputString.isEmpty()) {
+                System.out.println("That didn't work. Try again.");
+                return getStringInput();
             }
-        } else {
-            System.out.println("I will keep the colorsetting");
-            colorEdit = m.getColor();
+            return inputString;
+        } catch (InputMismatchException e) {
+            System.out.println("That didn't work. Try again.");
+            scanner.nextLine(); // Consume the invalid input
+            return getStringInput();
         }
-        System.out.println("Would you like to edit the length in minutes? Enter yes/no");
-        int lengthEdit = m.getLengthInMinutes();
-        Edit = scanner.nextLine();
-        if (Edit.equals("yes")) {
-            System.out.println("type the new length in minutes:");
-            lengthEdit = scanner.nextInt();
-            System.out.println("The new length is " + lengthEdit);
-            m.setLengthInMinutes(lengthEdit);
-        } else {
-            System.out.println("I will keep the length " + m.getLengthInMinutes() + " minutes long");
-        }
-
-
-        System.out.println("Would you like to edit the genre? Enter yes/no");
-        String genreEdit = m.getGenre();
-        Edit = scanner.nextLine();
-        if (Edit.equals("yes")) {
-            System.out.println("type the new genre");
-            genreEdit = scanner.nextLine();
-            System.out.println("The new genre is " + genreEdit);
-            m.setGenre(genreEdit);
-        } else {
-            System.out.println("I will keep the genre " + m.getGenre());
-        }
-        movieController.editMovie(movieNumber, titleEdit, directorEdit, yearEdit, colorEdit, lengthEdit, genreEdit);
     }
+
+    private void editMovie() {
+        System.out.print("Enter title to edit: ");
+        String edit = scanner.nextLine();
+        movieController.editMovie(edit);
+    }
+    private int getIntegerInput() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer value.");
+                scanner.nextLine(); // Consume the invalid input
+            }
+        }
+    }
+
+    private double getDoubleInput() {
+        while (true) {
+            try {
+                return scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a numeric value.");
+                scanner.nextLine(); // Consume the invalid input
+            }
+        }
+    }
+
+
 
     public void remove() {
         System.out.println("What is the title of the movie you'd like to remove?");
@@ -261,7 +194,7 @@ public class UserInterface {
     }
 
 
-    private Comparator<Movie> getComparatorOption(int option) {
+    Comparator<Movie> getComparatorOption(int option) {
         switch (option) {
             case 1:
                 return new TitleComparator();
