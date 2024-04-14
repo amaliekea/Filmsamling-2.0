@@ -79,16 +79,16 @@ public class UserInterface {
         System.out.println("---------Add film details below---------");
 
         System.out.print("Title: ");
-        String title = scanner.nextLine();
+        String title = getStringInput();
 
         System.out.print("Director: ");
-        String director = scanner.nextLine();
+        String director = getStringInput();
 
         System.out.print("Year: ");
         int year = getIntegerInput();
 
         System.out.print("Genre: ");
-        String genre = scanner.nextLine();
+        String genre = getStringInput();
 
         System.out.print("Is the movie in color? Type yes/no: ");
         boolean color = scanner.nextLine().equalsIgnoreCase("yes");
@@ -125,9 +125,25 @@ public class UserInterface {
         while (true) {
             try {
                 String input = scanner.nextLine();
-                return Integer.parseInt(input);
+                if (input.matches("[0-9]+")) {
+                    return Integer.parseInt(input);
+                } else {
+                    System.out.println("Invalid input. Please enter an integer value.");
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter an integer value.");
+            }
+        }
+    }
+
+    private String getStringInput() {
+        while (true) {
+            String input = scanner.nextLine().trim();
+
+            if (!input.isEmpty() && input.matches("[a-zA-Z ]+")) {
+                return input;
+            } else {
+                System.out.println("Invalid input. Please enter alphabetic characters.");
             }
         }
     }
