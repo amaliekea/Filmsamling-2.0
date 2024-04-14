@@ -1,4 +1,5 @@
 package domain_model;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -11,9 +12,11 @@ public class MovieCollection {
     public MovieCollection() {
         filmObjekter = new ArrayList<>();
     }
+
     public void sortMoviesBy(Comparator<Movie> movieCompare) {
         filmObjekter.sort(movieCompare);
     }
+
     public void editMovie(String title) {
         boolean continueEditing = true;
 
@@ -63,6 +66,7 @@ public class MovieCollection {
             }
         }
     }
+
     private String getStringInput() {
         return scanner.nextLine().trim();
     }
@@ -80,23 +84,13 @@ public class MovieCollection {
         return value;
     }
 
-    private double getDoubleInput() {
-        double value;
-        while (true) {
-            try {
-                value = Double.parseDouble(getStringInput());
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a numeric value:");
-            }
-        }
-        return value;
-    }
 
-    public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
+    public String addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
         filmObjekter.add(new Movie(title, director, year, Color, lengthInMinutes, genre));
+        return title + "was added to the collection!";
 
     }
+
 
     public void printMyCollection() {
         for (int i = 0; i < filmObjekter.size(); i++) {
@@ -113,6 +107,7 @@ public class MovieCollection {
             System.out.println("Venligst indtast et nummer mellem 0 " + "og " + filmObjekter.size());
         }
     }
+
     public void searchMovie(String title) {
         boolean hasFound = false;
         System.out.println("Search results can be seen below:");
@@ -132,9 +127,11 @@ public class MovieCollection {
     public Movie getMovie(int movieNumber) {
         return filmObjekter.get(movieNumber);
     }
+
     public ArrayList<Movie> getMovieCollectionList() {
         return filmObjekter;
     }
+
     public String removeMovie(String title) {
         for (int i = 0; i < filmObjekter.size(); i++) {
             Movie m = filmObjekter.get(i);

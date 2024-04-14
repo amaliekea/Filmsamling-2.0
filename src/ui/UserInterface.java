@@ -114,48 +114,23 @@ public class UserInterface {
         movieController.searchMovie(search);
     }
 
-    private String getStringInput() {
-        try {
-            String inputString = scanner.nextLine().trim().toLowerCase();
-            if (inputString.isEmpty()) {
-                System.out.println("That didn't work. Try again.");
-                return getStringInput();
-            }
-            return inputString;
-        } catch (InputMismatchException e) {
-            System.out.println("That didn't work. Try again.");
-            scanner.nextLine(); // Consume the invalid input
-            return getStringInput();
-        }
-    }
 
     private void editMovie() {
         System.out.print("Enter title to edit: ");
         String edit = scanner.nextLine();
         movieController.editMovie(edit);
     }
+
     private int getIntegerInput() {
         while (true) {
             try {
-                return scanner.nextInt();
-            } catch (InputMismatchException e) {
+                String input = scanner.nextLine();
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter an integer value.");
-                scanner.nextLine(); // Consume the invalid input
             }
         }
     }
-
-    private double getDoubleInput() {
-        while (true) {
-            try {
-                return scanner.nextDouble();
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a numeric value.");
-                scanner.nextLine(); // Consume the invalid input
-            }
-        }
-    }
-
 
 
     public void remove() {

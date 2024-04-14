@@ -14,11 +14,11 @@ public class Controller {
     }
 
 
-    public void addMovie(String title, String director, int year, boolean color, int minute, String genre) {
-        liste.addMovie(title, director, year, color, minute, genre);
-        System.out.println("Movie added successfully!");
-        this.saveMovies();
+    public String addMovie(String title, String director, int year, boolean color, int minute, String genre) {
+        return liste.addMovie(title, director, year, color, minute, genre);
     }
+
+
 
     public void printCollection(Comparator<Movie> movieCompare) {
         liste.sortMoviesBy(movieCompare);
